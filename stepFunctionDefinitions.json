@@ -1,0 +1,46 @@
+{
+  "StartAt": "webscrape",
+  "States": {
+    "webscrape": {
+  "Type": "Task",
+  "Resource": "arn:aws:lambda:us-east-1:873658557902:function:WebScrape",
+      "Parameters": {"tickers": [
+   "1398",
+    "939",
+    "2800",
+    "2638",
+    "1997",
+    "12",
+    "2388",
+    "388",
+    "778",
+    "823",
+    "16",
+    "3",
+    "1038",
+    "2",
+    "66",
+    "1113",
+    "1299",
+    "3988",
+    "52",
+    "5",
+    "11",
+    "6",
+    "1",
+    "2318"
+      ]},
+  "Next": "rankStocks"
+},
+     "rankStocks": {
+  "Type": "Task",
+  "Resource": "arn:aws:lambda:us-east-1:873658557902:function:RankStocks",
+ "Next": "email"
+},
+    "email": {
+  "Type": "Task",
+  "Resource": "arn:aws:lambda:us-east-1:873658557902:function:EmailSender",
+ "End": true
+}
+  }
+}
